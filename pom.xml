@@ -142,6 +142,10 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
+					<webAppConfig>
+						<contextPath>/webApp</contextPath>
+					</webAppConfig>
+					<jettyConfig>src/main/etc/jetty.xml</jettyConfig>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8080</port>
@@ -156,6 +160,13 @@
 						</connector>
 					</connectors>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.jetty.aggregate</groupId>
+						<artifactId>jetty-all-server</artifactId>
+						<version>${jetty.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
